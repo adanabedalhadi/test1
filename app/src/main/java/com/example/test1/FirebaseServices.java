@@ -6,6 +6,8 @@ public class FirebaseServices {
     private static FirebaseServices instance;
     private FirebaseAuth auth;
 
+
+
     public static FirebaseServices getInstance() {
         return instance;
     }

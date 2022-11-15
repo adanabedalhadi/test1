@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragExercises">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/etNameExe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="81dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginBottom="4dp"
+            android:ems="10"
+            android:hint="Name..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/etAboutExe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etAboutExe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="3dp"
+            android:ems="10"
+            android:hint="About..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/etDescriptionExe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNameExe" />
+
+        <EditText
+            android:id="@+id/etDescriptionExe"
+            android:layout_width="358dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="23dp"
+            android:ems="10"
+            android:hint="Description..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/etInstructionExe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAboutExe" />
+
+        <EditText
+            android:id="@+id/etInstructionExe"
+            android:layout_width="357dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="9dp"
+            android:ems="10"
+            android:hint="Instruction..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/etWarningExe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etDescriptionExe" />
+
+        <EditText
+            android:id="@+id/etWarningExe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="76dp"
+            android:ems="10"
+            android:hint="Warning..."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddExe"
+            app:layout_constraintEnd_toEndOf="@+id/etInstructionExe"
+            app:layout_constraintStart_toStartOf="@+id/etInstructionExe"
+            app:layout_constraintTop_toBottomOf="@+id/etInstructionExe" />
+
+        <Button
+            android:id="@+id/btnAddExe"
+            android:layout_width="380dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="118dp"
+            android:text="add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etWarningExe" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
