@@ -13,13 +13,13 @@
 
         <EditText
             android:id="@+id/etUsernameLogin"
-            android:layout_width="277dp"
-            android:layout_height="0dp"
+            android:layout_width="279dp"
+            android:layout_height="62dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="143dp"
             android:layout_marginEnd="2dp"
             android:ems="10"
-            android:hint="Username.."
+            android:hint="Username..."
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
