@@ -2,7 +2,9 @@ package com.example.test1;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,6 +30,7 @@ public class FragmentSignup extends Fragment {
 
     private EditText etPassword,etEmail,etConfirmPassword;
     private Button btnSignup;
+    private FirebaseServices fbs;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +90,7 @@ public class FragmentSignup extends Fragment {
         etPassword= getView().findViewById(R.id.etPasswordSignup);
         etConfirmPassword= getView().findViewById(R.id.etConfirmPasswordSignup);
         btnSignup= getView().findViewById(R.id.btnSingup);
+        fbs= FirebaseServices.getInstance();
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +112,19 @@ public class FragmentSignup extends Fragment {
                     Toast.makeText(getActivity(), "Password not identical!", Toast.LENGTH_SHORT).show();
                 }
 
+                fbs.getAuth().createUserWithEmailAndPassword(email,password)
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.FramlayoutMain, new FragExercises());
+                                    ft.commit();
+                                } else {
+                                    Toast.makeText(getActivity(), "Incorrect Email or Password!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
             public boolean isPasswordValid(String password){
                 Pattern pattern;

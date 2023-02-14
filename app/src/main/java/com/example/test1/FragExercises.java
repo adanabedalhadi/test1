@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,13 +93,16 @@ public class FragExercises extends Fragment {
             public void onClick(View view) {
 
                 String n = name.getText().toString();
-                Exercises exercise = new Exercises(.....);
-                Map<String, Exercises> Exercise= new HashMap<>();
+                String a=about.getText().toString();
+                String d=description.getText().toString();
+                String i=instruction.getText().toString();
+                String w=warning.getText().toString();
 
+                Exercises exercise = new Exercises(n,a,d,i,w);
+                //Map<String, Exercises> exercises= new HashMap<>();
 
-
-                fbs.getFire().collection("excersizes").document("EXE")
-                        .set(Exercise)
+                fbs.getFire().collection("exercises").document("ccc")
+                        .set(exercise)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {

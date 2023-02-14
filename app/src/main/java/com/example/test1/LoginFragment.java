@@ -5,12 +5,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +29,8 @@ public class LoginFragment extends Fragment {
 
     private EditText etPassword,etUsername;
     private Button btnLogin;
-    private FirebaseAuth mAuth;
+    private FirebaseServices fbs;
+    private TextView forgetPassword;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,20 +90,31 @@ public class LoginFragment extends Fragment {
         etUsername= getView().findViewById(R.id.etUsernameLogin);
         etPassword= getView().findViewById(R.id.etPasswordLogin);
         btnLogin= getView().findViewById(R.id.btnLogin);
-        mAuth= FirebaseAuth.getInstance();
+        forgetPassword= getView().findViewById(R.id.tvForgetPassword);
+        fbs= FirebaseServices.getInstance();
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FramlayoutMain, new RestPassword());
+                ft.commit();
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username=etUsername.getText().toString();
                 String password=etPassword.getText().toString();
-               mAuth.signInWithEmailAndPassword(username, password)
+                fbs.getAuth().signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    //
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.FramlayoutMain, new FragExercises());
+                                    ft.commit();
                                 } else {
-                                    // PUT YOUR CODE HERE
+                                    Toast.makeText(getActivity(), "Incorrect Username or Password!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -107,5 +122,6 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
     }
 }
