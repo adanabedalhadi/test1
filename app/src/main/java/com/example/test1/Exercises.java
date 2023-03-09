@@ -1,18 +1,31 @@
 package com.example.test1;
 
 public class Exercises {
+    private String id;
     private String name;
     private String about;
     private String description;
     private String instruction;
     private String warning;
 
-    public Exercises(String name, String about, String description, String instruction, String warning) {
+    public Exercises() {
+    }
+
+    public Exercises(String id, String name, String about, String description, String instruction, String warning) {
+        this.id = id;
         this.name = name;
         this.about = about;
         this.description = description;
         this.instruction = instruction;
         this.warning = warning;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,12 +71,12 @@ public class Exercises {
     @Override
     public String toString() {
         return "Exercises{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", about='" + about + '\'' +
                 ", description='" + description + '\'' +
                 ", instruction='" + instruction + '\'' +
                 ", warning='" + warning + '\'' +
                 '}';
     }
-
 }

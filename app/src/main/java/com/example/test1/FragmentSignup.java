@@ -126,15 +126,14 @@ public class FragmentSignup extends Fragment {
                             }
                         });
             }
-            public boolean isPasswordValid(String password){
+            public boolean isPasswordValid(String password) {
                 Pattern pattern;
                 Matcher matcher;
-                final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+                final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
                 pattern = Pattern.compile(PASSWORD_PATTERN);
                 matcher = pattern.matcher(password);
 
                 return matcher.matches();
-
             }
             public boolean isEmailValid(String email){
                 String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";

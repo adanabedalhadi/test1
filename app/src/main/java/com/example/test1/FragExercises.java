@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,29 +94,34 @@ public class FragExercises extends Fragment {
             @Override
             public void onClick(View view) {
 
+                String id = UUID.randomUUID().toString();
                 String n = name.getText().toString();
                 String a=about.getText().toString();
                 String d=description.getText().toString();
                 String i=instruction.getText().toString();
                 String w=warning.getText().toString();
 
-                Exercises exercise = new Exercises(n,a,d,i,w);
+                Exercises exercise = new Exercises(id,n,a,d,i,w);
                 //Map<String, Exercises> exercises= new HashMap<>();
 
-                fbs.getFire().collection("exercises").document("ccc")
+                fbs.getFire().collection("exercises").document(id)
                         .set(exercise)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-
+                                Log.i("TAG", "onSuccess: ");
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                Log.e("TAG", "onFailure: ");
 
                             }
                         });
+
+
+
             }
         });
     }

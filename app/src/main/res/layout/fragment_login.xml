@@ -14,13 +14,15 @@
         <EditText
             android:id="@+id/etUsernameLogin"
             android:layout_width="279dp"
-            android:layout_height="62dp"
+            android:layout_height="0dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="143dp"
             android:layout_marginEnd="2dp"
+            android:layout_marginBottom="99dp"
             android:ems="10"
             android:hint="Username..."
             android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,16 +30,14 @@
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="183dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="357dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="367dp"
             android:hint="Password.."
             android:text="login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin" />
 
         <EditText
             android:id="@+id/etPasswordLogin"
