@@ -18,11 +18,11 @@
             android:layout_marginStart="2dp"
             android:layout_marginTop="143dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="99dp"
+            android:layout_marginBottom="469dp"
             android:ems="10"
             android:hint="Username..."
             android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,14 +30,15 @@
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="183dp"
-            android:layout_height="0dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="367dp"
             android:hint="Password.."
             android:text="login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin"
+            app:layout_constraintVertical_bias="0.875" />
 
         <EditText
             android:id="@+id/etPasswordLogin"
@@ -57,13 +58,24 @@
             android:id="@+id/tvForgetPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="32dp"
             android:layout_marginBottom="319dp"
             android:text=" Forgot password ..."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnLogin"
             app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin"
-            app:layout_constraintVertical_bias="0.868" />
+            app:layout_constraintVertical_bias="0.867" />
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="39dp"
+            android:text="don't have account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

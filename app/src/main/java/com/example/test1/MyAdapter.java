@@ -4,9 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -40,7 +43,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.description.setText(exercise.getDescription());
         holder.instruction.setText(exercise.getInstruction());
         holder.warning.setText(exercise.getWarning());
+
+        holder.loutRv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) context;
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.FramlayoutMain,new Details()).addToBackStack(null).commit();
+            }
+
+        });
+
+
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -50,8 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView  name,about, description,  instruction,  warning;
-
-
+        LinearLayout loutRv;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.tvName);
@@ -59,6 +74,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             description=itemView.findViewById(R.id.tvDescription);
             instruction=itemView.findViewById(R.id.tvInstruction);
             warning=itemView.findViewById(R.id.tvWarning);
+            loutRv=itemView.findViewById(R.id.loutRv);
         }
     }
+
 }

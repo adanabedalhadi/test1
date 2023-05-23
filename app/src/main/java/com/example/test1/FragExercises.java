@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -109,7 +110,11 @@ public class FragExercises extends Fragment {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+                                // todo: goto recyclerview page
                                 Log.i("TAG", "onSuccess: ");
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.FramlayoutMain, new RvExercises());
+                                ft.commit();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

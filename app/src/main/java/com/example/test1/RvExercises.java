@@ -1,16 +1,24 @@
 package com.example.test1;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.remote.WatchChange;
 
 import java.util.ArrayList;
 
@@ -25,6 +33,7 @@ public class RvExercises extends Fragment {
     ArrayList<Exercises> exercisesArrayList;
     MyAdapter myAdapter;
     FirebaseFirestore db;
+    ProgressDialog progressDialog;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,6 +92,11 @@ public class RvExercises extends Fragment {
 
     private void connectComponents() {
 
+        /*progressDialog= new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching Data...");
+        progressDialog.show();*/
+
         recyclerView =getView().findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -91,7 +105,43 @@ public class RvExercises extends Fragment {
         exercisesArrayList=new ArrayList<Exercises>();
         myAdapter=new MyAdapter(getActivity(),exercisesArrayList);
 
+        recyclerView.setAdapter(myAdapter);
+
+        EventChangeListener();
+
     }
 
+    private void EventChangeListener() {
+        db.collection("exercises").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+/*
+                if (error != null) {
 
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss();
+
+                    Log.e("Firestore error",error.getMessage());
+                    return;
+
+                } */
+
+                for (DocumentChange dc :value.getDocumentChanges()){
+
+                    if (dc.getType()== DocumentChange.Type.ADDED){
+
+                        exercisesArrayList.add(dc.getDocument().toObject(Exercises.class));
+                    }
+                    myAdapter.notifyDataSetChanged();
+
+                    /*
+                    if (progressDialog.isShowing())
+                        progressDialog.dismiss(); */
+                }
+
+
+
+            }
+        });
+    }
 }
