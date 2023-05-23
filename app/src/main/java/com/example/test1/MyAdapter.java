@@ -25,14 +25,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v= LayoutInflater.from(context).inflate(R.id)
+        View v= LayoutInflater.from(context).inflate(R.layout.itemexe,parent,false);
 
-        return null;
+        return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
 
+        Exercises exercise=exercisesArrayList.get(position);
+
+        holder.name.setText(exercise.getName());
+        holder.about.setText(exercise.getAbout());
+        holder.description.setText(exercise.getDescription());
+        holder.instruction.setText(exercise.getInstruction());
+        holder.warning.setText(exercise.getWarning());
     }
 
     @Override

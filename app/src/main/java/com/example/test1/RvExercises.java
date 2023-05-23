@@ -3,10 +3,16 @@ package com.example.test1;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +20,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class RvExercises extends Fragment {
+
+    RecyclerView recyclerView;
+    ArrayList<Exercises> exercisesArrayList;
+    MyAdapter myAdapter;
+    FirebaseFirestore db;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,6 +65,7 @@ public class RvExercises extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -61,4 +74,24 @@ public class RvExercises extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_rv_exercises, container, false);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        connectComponents();
+    }
+
+    private void connectComponents() {
+
+        recyclerView =getView().findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        db=FirebaseFirestore.getInstance();
+        exercisesArrayList=new ArrayList<Exercises>();
+        myAdapter=new MyAdapter(getActivity(),exercisesArrayList);
+
+    }
+
+
 }
