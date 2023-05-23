@@ -1,6 +1,7 @@
 package com.example.test1;
 
-public class Exercises {
+public class
+Exercises {
     private String id;
     private String name;
     private String about;
