@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -69,12 +68,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         LinearLayout loutRv;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.tvName);
+            name=itemView.findViewById(R.id.tvNameL);
             about=itemView.findViewById(R.id.tvAbout);
             description=itemView.findViewById(R.id.tvDescription);
             instruction=itemView.findViewById(R.id.tvInstruction);
             warning=itemView.findViewById(R.id.tvWarning);
-            loutRv=itemView.findViewById(R.id.loutRv);
+            loutRv=itemView.findViewById(R.id.loutRvL);
         }
     }
 

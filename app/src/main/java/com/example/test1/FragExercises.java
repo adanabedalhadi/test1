@@ -113,7 +113,7 @@ public class FragExercises extends Fragment {
                                 // todo: goto recyclerview page
                                 Log.i("TAG", "onSuccess: ");
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.FramlayoutMain, new RvExercises());
+                                ft.replace(R.id.FramlayoutMain, new ListExe());
                                 ft.commit();
                             }
                         })
